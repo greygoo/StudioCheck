@@ -5,7 +5,6 @@ gem 'sqlite3'
 gem 'bootstrap-sass', '~> 2.0.1'
 gem 'studio_api'
 gem 'cucumber'
-gem 'cucumber-rails'
 gem 'therubyracer'
 
 gem 'resque'
@@ -23,6 +22,7 @@ group :development do
 end
 
 group :test do
+  gem 'cucumber-rails'
   gem 'database_cleaner'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
