@@ -8,7 +8,7 @@ gem 'cucumber'
 gem 'therubyracer'
 
 gem 'resque'
-gem 'resque-scheduler', :git => "https://github.com/bvandenbos/resque-scheduler.git"
+gem 'resque-scheduler', :git => "git://github.com/bvandenbos/resque-scheduler.git"
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
