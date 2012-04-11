@@ -172,6 +172,7 @@ GEM
     studio_api (3.2.0)
       activeresource (>= 2.3.8)
       xml-simple (>= 1.0.0)
+    system_timer (1.2.4)
     term-ansicolor (1.0.7)
     therubyracer (0.9.10)
       libv8 (~> 3.3.10)
@@ -209,5 +210,6 @@ DEPENDENCIES
   sass-rails (~> 3.2.3)
   sqlite3
   studio_api
+  system_timer
   therubyracer
   uglifier (>= 1.0.3)

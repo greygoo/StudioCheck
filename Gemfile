@@ -7,6 +7,7 @@ gem 'studio_api'
 gem 'cucumber'
 
 gem 'therubyracer'
+gem 'system_timer'
 
 gem 'resque'
 gem 'resque-scheduler', :git => "git://github.com/bvandenbos/resque-scheduler.git"
