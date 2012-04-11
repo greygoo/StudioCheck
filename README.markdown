@@ -21,8 +21,14 @@ Translation to matchers and API calls are pretty straightforward as well.
   $ bundle install
 ```
 
-StudioCheck uses Resque to execute tests, so the Redis database needs to be
-installed.
+StudioCheck uses Resque to execute tests, so the Redis database must be
+started, eg:
+
+```
+  $ sudo su                 # Switch to root user
+  $ rcredis start           # Start redis now
+  $ chkconfig redis on      # Automatically start redis on boot
+```
 
 ## Usage
 
