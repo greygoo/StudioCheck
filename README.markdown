@@ -19,6 +19,7 @@ Translation to matchers and API calls are pretty straightforward as well.
   $ git clone git://github.com/bkutil/StudioCheck.git
   $ cd StudioCheck
   $ bundle install
+  $ rake db:migrate
 ```
 
 StudioCheck uses Resque to execute tests, so the Redis database must be
