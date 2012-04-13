@@ -39,3 +39,9 @@ started, eg (on openSUSE / SLE):
   $ rake resque:work &
   $ rails s 
 ```
+
+## Contect
+
+The devs hang out @ #studiocheck channel on irc.freenode.net, or you can join
+the [studio check](https://groups.google.com/forum/#!forum/studio-check) google
+group.
