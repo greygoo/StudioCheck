@@ -15,6 +15,8 @@ Translation to matchers and API calls are pretty straightforward as well.
 
 ## Installation
 
+StudioCheck requires ruby 1.9.2 to run.
+
 ```
   $ git clone git://github.com/bkutil/StudioCheck.git
   $ cd StudioCheck
@@ -23,7 +25,7 @@ Translation to matchers and API calls are pretty straightforward as well.
 ```
 
 StudioCheck uses Resque to execute tests, so the Redis database must be
-started, eg:
+started, eg (on openSUSE / SLE):
 
 ```
   $ sudo su                 # Switch to root user
