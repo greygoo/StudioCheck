@@ -2,8 +2,8 @@
 
 FactoryGirl.define do
   factory :server do
-    api_url "MyString"
-    username "MyString"
-    password "MyString"
+    api_url "http://susestudio.com/api/v2/user"
+    username "testuser"
+    password "testpass"
   end
 end
