@@ -1,1 +1,1 @@
-rvm ruby-1.9.2-p290@studio_checker
+rvm use ruby-1.9.2@studio_checker
