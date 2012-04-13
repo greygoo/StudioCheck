@@ -6,6 +6,10 @@ describe Server do
       @server = Factory(:server)
     end
 
+    after(:each) do
+      @server.destroy
+    end
+
     it "should not be valid if it misses url" do
       @server.api_url = nil
       @server.should_not be_valid 
