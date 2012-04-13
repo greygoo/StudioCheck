@@ -8,6 +8,7 @@ gem 'cucumber'
 gem 'capistrano'
 
 gem 'therubyracer'
+gem 'memcache-client'
 
 gem 'resque'
 gem 'resque-scheduler', :git => "git://github.com/bvandenbos/resque-scheduler.git"
