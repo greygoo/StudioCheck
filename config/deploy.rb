@@ -21,7 +21,7 @@ role :app, "kutilovi.cz"
 role :db,  "kutilovi.cz", :primary => true
 
 # restart workers + scheduler after deploy
-after "deploy:symlink", "deploy:restart_workers"
+after "deploy:create_symlink", "deploy:restart_workers"
 # after "deploy:restart_workers", "deploy:restart_scheduler"
 
 ##
