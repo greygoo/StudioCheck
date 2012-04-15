@@ -7,12 +7,25 @@ class TestRun < ActiveRecord::Base
     Resque.enqueue(TestRunJob, self.id)
   end
 
+  def log_file
+    "#{filename}.log"
+  end
+
+  def feature_file
+    "#{filename}.feature"
+  end
+
   def run_log
-    @logfile ||= File.join(Rails.root, "features", "#{self.test_description.id}-#{self.id}.log")
-    if File.exists?(@logfile)
-      File.read(@logfile)
+    if File.exists?(log_file)
+      File.read(log_file)
     else
       self.log
     end
+  end
+
+  private
+
+  def filename
+    File.join(Rails.root, "features", "#{self.test_description.id}-#{self.id}")
   end
 end

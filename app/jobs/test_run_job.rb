@@ -1,11 +1,11 @@
-class TestRunJob
+class TestRunJob < Job
   @queue = :tests
 
   def self.perform(id)
     test_run = TestRun.find(id)
-    dir = File.join(Rails.root, "features")
-    feature = File.join(dir, "#{test_run.test_description.id}-#{test_run.id}.feature")
-    log = File.join(dir, "#{test_run.test_description.id}-#{test_run.id}.log")
+    log = test_run.log_file
+    feature = test_run.feature_file
+    logger.info "Processing test run: #{id}"
 
     File.open(feature, "w") { |f| f.write(test_run.test_description.description) }
 
@@ -16,11 +16,16 @@ class TestRunJob
       'RAILS_ENV' => 'test',
     }
 
+    logger.info "Running cucumber"
     Open3.pipeline_r([env, "cucumber", "-S", feature, :err => :out], ["tee", "-a", log], :chdir => Rails.root) do |output, threads|
       test_run.log = output.readlines.join
       test_run.result = (threads.first.value == 0)
     end
+  rescue Exception => e
+    logger.info(e.backtrace)
+    raise
   ensure
+    logger.info "Done"
     test_run.save!
     FileUtils.rm(feature) if File.exists?(feature)
     FileUtils.rm(log) if File.exists?(log)
