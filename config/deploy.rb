@@ -16,6 +16,8 @@ set :deploy_to, "/srv/app/check.kutilovi.cz"
 set :use_sudo, false
 set :user, "cap"
 
+set :bundle_without, [:development]
+
 role :web, "kutilovi.cz"
 role :app, "kutilovi.cz"
 role :db,  "kutilovi.cz", :primary => true
