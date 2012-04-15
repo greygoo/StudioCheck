@@ -13,6 +13,7 @@ class TestRunJob
       'USER' => test_run.server.username,
       'PASS' => test_run.server.password,
       'URL'  => test_run.server.api_url,
+      'RAILS_ENV' => 'test',
     }
 
     Open3.pipeline_r([env, "cucumber", "-S", feature, :err => :out], ["tee", "-a", log], :chdir => Rails.root) do |output, threads|

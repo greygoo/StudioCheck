@@ -4,7 +4,6 @@ gem 'rails', '3.2.1'
 gem 'sqlite3'
 gem 'bootstrap-sass', '~> 2.0.1'
 gem 'studio_api'
-gem 'cucumber'
 gem 'capistrano'
 
 gem 'therubyracer'
@@ -30,4 +29,5 @@ group :test do
   gem 'factory_girl_rails'
   gem 'mocha'
   gem 'cucumber-rails'
+  gem 'cucumber'
 end
