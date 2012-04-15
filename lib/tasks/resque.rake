@@ -38,10 +38,11 @@ namespace :resque do
 
   desc "Quit running workers"
   task :stop_workers => :environment do
-    pids = Resque.workers.map { |w| w.pid }
-    if pids.empty?
+    workers = Resque.workers
+    if workers.empty?
       puts "No workers to kill"
     else
+      pids = workers.first.worker_pids
       syscmd = "kill -s QUIT #{pids.join(' ')}"
       puts "Running syscmd: #{syscmd}"
       system(syscmd)
