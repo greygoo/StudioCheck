@@ -17,7 +17,12 @@
           <li><%= link_to "Home", root_path %></li>
           <li><%= link_to "Servers", servers_path %></li>
           <li><%= link_to "Tests", test_descriptions_path %></li>
-          <li><%= link_to "Backend", test_execution_path %></li>
+          <li><%= link_to "Backend", execution_path %></li>
+        </ul>
+      </div>
+      <div>
+        <ul class="nav pull-right">
+          <li><a href="#" class="disabled" id='redis-status'></a></li>
         </ul>
       </div>
     </div>
@@ -53,6 +58,5 @@
 
   <footer class="page-footer"></footer>
 </div>
-
 </body>
 </html>

@@ -9,7 +9,8 @@ StudioCheck::Application.routes.draw do
   resources :test_descriptions
   resources :servers
 
-  match "test_execution" => "execution#index", :via => :get
+  match "/execution" => "execution#index", :via => :get
+  match "/execution/redis_status" => "execution#redis_status", :via => :get, :as => :redis_status
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

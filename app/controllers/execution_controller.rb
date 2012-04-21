@@ -4,25 +4,31 @@ class ExecutionController < ApplicationController
     @schedule = []
     @queues = []
 
-    @error = nil
-
     begin
       @workers = Resque.workers
       @schedule = Resque.schedule
       @queues = Resque.queues
     rescue Errno::ECONNREFUSED => e
-      @error = e.message
+      # stay silent
     end
 
     respond_to do |format|
-      if @error
-        flash[:alert] = @error
-        format.html { render action: :index }
-        format.json { render json: @error, status: :unprocessable_entity }
-      else
-        format.html
-        format.json { render json: { workers: @workers, queues: @queues } }
-      end
+      format.html
+      format.json { render json: { workers: @workers, queues: @queues } }
+    end
+  end
+
+  def redis_status
+    @redis_up = true
+
+    begin
+      Resque.redis.status?
+    rescue Errno::ECONNREFUSED => e
+      @redis_up = false
+    end
+
+    respond_to do |format|
+        format.html { render :action => :redis_status, :layout => false }
     end
   end
 end
