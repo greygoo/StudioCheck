@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<div class="navbar navbar-fixed-top">
+<div class="navbar">
   <div class="navbar-inner">
     <div class="container">
       <%= link_to "StudioCheck", root_path, :class => :brand %>
@@ -26,11 +26,13 @@
 
 <div class="container">
   <div class="row-fluid">
-    <%= yield %>
+    <div class="span12">
+      <%= yield %>
+    </div>
   </div>
-</div>
 
-<footer class="page-footer"></footer>
+  <footer class="page-footer"></footer>
+</div>
 
 </body>
 </html>
