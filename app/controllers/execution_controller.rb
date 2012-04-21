@@ -31,4 +31,23 @@ class ExecutionController < ApplicationController
         format.html { render :action => :redis_status, :layout => false }
     end
   end
+
+  def workers_status
+    @workers_working = 0
+    @workers_all = 0
+
+    begin
+      workers = Resque.workers
+
+      @workers_all = workers.count
+      @workers_working = workers.select { |w| w.working? }.count
+    rescue Errno::ECONNREFUSED => e
+      @workers_working = "-"
+      @workers_all = "N/A"
+    end
+
+    respond_to do |format|
+      format.html { render :action => :workers_status, :layout => false }
+    end
+  end
 end

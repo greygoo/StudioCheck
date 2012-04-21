@@ -11,6 +11,7 @@ StudioCheck::Application.routes.draw do
 
   match "/execution" => "execution#index", :via => :get
   match "/execution/redis_status" => "execution#redis_status", :via => :get, :as => :redis_status
+  match "/execution/workers_status" => "execution#workers_status", :via => :get, :as => :workers_status
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
