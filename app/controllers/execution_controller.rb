@@ -42,7 +42,7 @@ class ExecutionController < ApplicationController
       @workers_all = workers.count
       @workers_working = workers.select { |w| w.working? }.count
     rescue Errno::ECONNREFUSED => e
-      @workers_working = "-"
+      @workers_working = "N/A"
       @workers_all = "N/A"
     end
 
