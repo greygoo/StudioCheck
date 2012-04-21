@@ -22,7 +22,7 @@ class ExecutionController < ApplicationController
     @redis_up = true
 
     begin
-      Resque.redis.status?
+      Resque.workers
     rescue Errno::ECONNREFUSED => e
       @redis_up = false
     end
