@@ -1,26 +1,20 @@
 <div class="row-fluid">
-<h1>Queues</h1>
+  <h1>Test queue (<%= @jobs.count %> jobs)</h1>
 
-<% queues.each do |queue| %>
-  <% size = Resque.size(queue) %>
-
-  <h2><%= queue.capitalize %> (<%= size %> jobs)</h2>
-
-  <% if size != 0 %>
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>Job</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% Resque.peek(queue, 0, size).each do |job| %>
-          <tr>
-            <td><%= job["payload"]["class"] %>:<%= worker.job["payload"]["args"].inspect %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-  <% end %>
-<% end %>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Job</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @jobs.each do |job| %>
+      <tr>
+        <td><%= job["class"].to_s %>:<%= job["args"].to_s %></td>
+        <td><%= link_to "Show", test_run_path(job["args"].first.to_i) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 </div>

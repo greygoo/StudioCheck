@@ -1,20 +1,20 @@
 class ExecutionController < ApplicationController
   def index
     @workers = []
-    @schedule = []
-    @queues = []
+    @jobs = []
 
     begin
+      # Resque.size + 1 is needed otherwise redis would return the job hash,
+      # insetad of list of hashes
+      @jobs = Resque.peek(:tests, 0, Resque.size(:tests) + 1).to_a
       @workers = Resque.workers
-      @schedule = Resque.schedule
-      @queues = Resque.queues
     rescue Errno::ECONNREFUSED => e
       # stay silent
     end
 
     respond_to do |format|
       format.html
-      format.json { render json: { workers: @workers, queues: @queues } }
+      format.json { render json: { workers: @workers, jobs: @jobs } }
     end
   end
 
