@@ -49,6 +49,12 @@ When /^I build it$/ do
   puts "Done"
 end
 
+When /^I testdrive it$/ do
+  @testdrive = StudioApi::Testdrive.create(:build_id => @build.id)
+  puts @testdrive.inspect
+end
+
+
 Then /^the (?:result|build) should be successful$/ do
   @finished_build = StudioApi::Build.find(@build.id)
   @finished_build.state.should == "finished"
